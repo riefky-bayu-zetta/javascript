@@ -23,4 +23,21 @@ function priceCalculator(book, discount, tax, stock, order) {
   return result;
 }
 
-console.log(priceCalculator({title: 'HarPot', price:10000, printing_status: true}, 0, 0, 4, 3));
+/**
+ * 
+ * @param {Number} result is total price after calculate price
+ * @param {Number} terms is total number of terms
+ */
+function termPlanner(result, terms) {
+  pricePerTerm = result/terms;
+  termsPayment = [];
+  for (let index = 0; index < terms; index++) {
+    termsPayment.push({
+      term: index+1,
+      price: pricePerTerm
+    })
+  }
+  return termsPayment;
+}
+
+console.log(termPlanner(priceCalculator({title: 'HarPot', price:10000, printing_status: true}, 0, 0, 4, 3), 3));
